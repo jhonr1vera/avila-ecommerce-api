@@ -1,0 +1,83 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id         Int      @id @default(autoincrement())
+  name        String
+  description String?
+  price       Float
+  quantity    Int
+  createdAt   DateTime @default(now())
+  discontinued Boolean @default(false)
+  discontinuedAt DateTime?
+  discontinuedById Int?
+  
+  discontinuedBy User? @relation("userDiscontinuedProducts", fields: [discontinuedById], references: [id])
+  productSales SaleItem[] @relation("productSales")
+}
+
+model Sale {
+  id          Int         @id @default(autoincrement())
+  saleDate    DateTime    @default(now())
+  totalAmount Float 
+  customerId  Int
+  paymentMethod String
+  status     String @default("Pendiente")
+  active      Boolean @default(true)
+  deactivatedAt DateTime?
+  deactivatedById Int?
+  
+  deactivatedBy User? @relation("userCancelledSales", fields: [deactivatedById], references: [id])
+  items       SaleItem[] @relation("saleItems")
+  user   User @relation("userCreatedSales", fields: [customerId], references: [id])
+}
+
+model SaleItem {
+  id          Int     @id @default(autoincrement())
+  quantity    Int
+  productId   Int
+  saleId      Int
+  salePrice Float
+  totalPrice Float
+  cancelled Boolean @default(false)
+
+  product     Product @relation("productSales", fields: [productId], references: [id])
+  sale        Sale    @relation("saleItems",fields: [saleId], references: [id])
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  password  String
+  firstName String
+  lastName  String
+  createdAt DateTime @default(now())
+  active    Boolean @default(true)
+  roleId    Int @default(1)
+
+  cancelledSales Sale[] @relation("userCancelledSales")
+  createdSales Sale[] @relation("userCreatedSales")
+  discontinuedProducts Product[] @relation("userDiscontinuedProducts")
+  role     Role    @relation(fields: [roleId], references: [id])
+}
+
+model Role {
+  id        Int      @id
+  roleName  String
+  adminKey  String?
+
+  users     User[]
+}
