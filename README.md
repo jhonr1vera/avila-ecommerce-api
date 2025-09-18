@@ -180,9 +180,83 @@ $ npm run dev
 ### Sales 🪙
 
 - `GET    /api/v1/sales`: Admin
+```
+[
+   {
+      "id": 1,
+      "saleDate": date,
+      "totalAmount": 1000,
+      "customerId": 1,
+      "status": "Pendiente",
+      "user" : {
+         "id": 1,
+         "username": "testUser"
+      }
+   },...
+]
+```
 - `GET    /api/v1/sales/user/me`: User owner
+```
+[
+   {
+      "id": 1,
+      "saleDate": date,
+      "totalAmount": 1000,
+      "customerId": 1,
+      "status": "Pendiente",
+      "user" : {
+         "id": 1,
+         "username": "testUser"
+      }
+   },...
+]
+```
 - `GET    /api/v1/sales/user/:id`: Admin
+```
+   {
+      "id": 1,
+      "saleDate": date,
+      "totalAmount": 1000,
+      "customerId": 1,
+      "paymentMethod": "Visa",
+      "status": "Pendiente",
+      "user" : {
+         "id": 1,
+         "username": "testUser",
+         "firstName": "Nombre",
+         "lastName": "Apellido"
+      }
+      "items": [
+         {
+            "id": 1,
+            "quantity": 2,
+            "productId": 1,
+            "salePrice": 13,
+            "totalPrice": 26,
+            "product": {
+               "id": 1,
+               "name": "Juguete"
+            }
+         }
+      ]
+   }
+```
 - `GET    /api/v1/sales/:id`: Admin or User Owner
+```
+{
+      "id": 1,
+      "saleDate": date,
+      "totalAmount": 1000,
+      "customerId": 1,
+      "paymentMethod": "Visa",
+      "status"
+      "status": "Pendiente"
+      "user" : {
+         "id": 1,
+         "username": "testUser"
+      }
+   },...
+```
 - `PATCH /api/v1/sales/:id`: Admin
 ```
 {
@@ -227,7 +301,7 @@ $ npm run dev
 NOTE: In the main directory, you will find a file called Avila_Ecommerce.postman_collection.json. This file is to import into Postman to obtain all the endpoints and body examples, but if you prefer not to use Postman, there is a dto directory in each entity that contains the type of request body expected by the endpoints. REMEMBER TO SET THE URL VARIABLE
 ```
 
-## Response Format
+## General Response Format
 
 ### Success
 ```
