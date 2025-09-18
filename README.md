@@ -3,7 +3,7 @@
 This API powers Avila E-commerce, a B2C platform designed to connect businesses with consumers through a scalable and secure backend.
 
 ### API Design
-This API is built using a Layered Architecture to promote separation of concerns and uphold the Single Responsibility Principle (SRP). Each layer is designed to encapsulate a specific aspect of the system’s functionality, resulting in a clean, modular structure that simplifies maintenance and scalability. There is three layers:
+This API is built using a Layered Architecture to promote separation of concerns and uphold the Single Responsibility Principle (SRP). Each layer is designed to encapsulate a specific aspect of the system’s functionality, resulting in a clean, modular structure that simplifies maintenance and scalability. There is these layers:
 
 - **Routes**: Responsible for handling incoming HTTP requests and directing them to the appropriate controllers.
 - **Controllers**: Manage the application's logic, processing the requests from the routes, and coordinating with services to fulfill them.
