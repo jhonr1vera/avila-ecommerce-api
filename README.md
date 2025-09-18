@@ -66,10 +66,11 @@ npx prisma migrate dev
 
 4. Seed Initial Data `seed at ./prisma/seed.ts`
     
-    1. To populate the database with essential configuration and sample data for testing purposes, run the following command from the project’s root directory:
+    1. To populate the database with essential configuration and sample data for testing purposes, run the following commands from the project’s root directory:
 
 ```bash
 # /main-directory
+npx prisma db seed
 npm run prisma-seed  
 ```
 
