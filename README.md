@@ -142,7 +142,7 @@ $ npm run dev
 - `POST /api/v1/auth/register`:  Both roles
 
 ```
-NOTE: In the main directory, you will find a file called Avila_Ecommerce.postman_collection.json. This file is to import into Postman to obtain all the endpoints and body examples, but if you prefer not to use Postman, there is a dto directory in each entity that contains the type of response expected by the endpoints.
+NOTE: In the main directory, you will find a file called Avila_Ecommerce.postman_collection.json. This file is to import into Postman to obtain all the endpoints and body examples, but if you prefer not to use Postman, there is a dto directory in each entity that contains the type of response expected by the endpoints. REMEMBER TO SET THE URL VARIABLE
 ```
 
 ## Response Format
