@@ -82,6 +82,8 @@ This API defines two distinct roles with different levels of access
 
 After run the `Seed Initial Data` command, you will have two users ready for testing:
 
+In login endpoint:
+
 #### With user role
 
 ```
