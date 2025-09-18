@@ -213,6 +213,22 @@ $ npm run dev
 ```
 - `GET    /api/v1/sales/user/:id`: Admin
 ```
+{
+      "id": 1,
+      "saleDate": date,
+      "totalAmount": 1000,
+      "customerId": 1,
+      "paymentMethod": "Visa",
+      "status"
+      "status": "Pendiente"
+      "user" : {
+         "id": 1,
+         "username": "testUser"
+      }
+   },...
+```
+- `GET    /api/v1/sales/:id`: Admin or User Owner
+```
    {
       "id": 1,
       "saleDate": date,
@@ -241,22 +257,7 @@ $ npm run dev
       ]
    }
 ```
-- `GET    /api/v1/sales/:id`: Admin or User Owner
-```
-{
-      "id": 1,
-      "saleDate": date,
-      "totalAmount": 1000,
-      "customerId": 1,
-      "paymentMethod": "Visa",
-      "status"
-      "status": "Pendiente"
-      "user" : {
-         "id": 1,
-         "username": "testUser"
-      }
-   },...
-```
+
 - `PATCH /api/v1/sales/:id`: Admin
 ```
 {
