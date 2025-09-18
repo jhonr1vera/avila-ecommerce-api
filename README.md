@@ -126,7 +126,24 @@ $ npm run dev
 - `GET    /api/v1/products`: Both roles
 - `GET    /api/v1/products/:id`: Both roles
 - `POST    /api/v1/products`: Admin
+```
+{
+   "name": "Laptop Asus",
+   "description": "Gaming laptop",
+   "price": 1000,
+   "quantity" 20
+}
+```
 - `PATCH   /api/v1/products/:id`: Admin
+```
+{
+# All fields are optional due is a patch method (minimun one)
+   "name": "Laptop Asus",
+   "description": "Gaming laptop",
+   "price": 1000,
+   "quantity" 20
+}
+```
 - `PATCH /api/v1/products/:id/delete`: Admin
 
 ### Sales 🪙
@@ -136,12 +153,44 @@ $ npm run dev
 - `GET    /api/v1/sales/user/:id`: Admin
 - `GET    /api/v1/sales/:id`: Admin or User Owner
 - `PATCH /api/v1/sales/:id`: Admin
+```
+{
+   "status": "En_camino"
+}
+```
 - `POST   /api/v1/sales`: User
+```
+{
+   "paymentMethod": "Visa",
+    "items": [
+       {
+          "productId": 1,
+          "quantity": 10
+       }
+    ]
+}
+```
 - `PATCH /api/v1/sales/:id/delete`: Admin
 
 ### User 👤
 - `POST /api/v1/auth/login`: Both roles
+```
+{
+    "username": "testUser",
+    "password": "abC.1234",
+}
+```
 - `POST /api/v1/auth/register`:  Both roles
+```
+{
+    "username": "testUser",
+    "password": "abC.1234",
+    "roleId": 1,
+    "firstName": "Name",
+    "lastName": "Lastname",
+    "adminKey": YOUR_ADMIN_KEY #Not neccesary with an user role
+}
+```
 
 ```
 NOTE: In the main directory, you will find a file called Avila_Ecommerce.postman_collection.json. This file is to import into Postman to obtain all the endpoints and body examples, but if you prefer not to use Postman, there is a dto directory in each entity that contains the type of request body expected by the endpoints. REMEMBER TO SET THE URL VARIABLE
