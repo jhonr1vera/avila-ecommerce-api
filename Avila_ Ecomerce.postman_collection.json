@@ -1,0 +1,716 @@
+{
+	"info": {
+		"_postman_id": "651ae0b4-00dd-45b6-96f5-2e2370cdd359",
+		"name": "Avila Ecomerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48188826"
+	},
+	"item": [
+		{
+			"name": "Inventory",
+			"item": [
+				{
+					"name": "All products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}products/",
+							"host": [
+								"{{URL}}products"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}products/:id",
+							"host": [
+								"{{URL}}products"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Harina P.AN\",\r\n    \"description\": \"Harina P.A.N de 2 kilos\",\r\n    \"price\": 12,\r\n    \"quantity\": 20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}products",
+							"host": [
+								"{{URL}}products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Post product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}products",
+									"host": [
+										"{{URL}}products"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"name\": \"Harina P.A.N\",\r\n    \"description\": \"Harina P.A.N de 2 kilos\",\r\n    \"price\": 12,\r\n    \"quantity\": 20\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Update product",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}products/:id",
+							"host": [
+								"{{URL}}products"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update product",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}products/:id",
+									"host": [
+										"{{URL}}products"
+									],
+									"path": [
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Delete product",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}products/:id/delete",
+							"host": [
+								"{{URL}}products"
+							],
+							"path": [
+								":id",
+								"delete"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Sales",
+			"item": [
+				{
+					"name": "All sales",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}sales?page=&limit=",
+							"host": [
+								"{{URL}}sales"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one sale",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}sales/:id",
+							"host": [
+								"{{URL}}sales"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Sales By Owner",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}sales/user/me?page=&limit=",
+							"host": [
+								"{{URL}}sales"
+							],
+							"path": [
+								"user",
+								"me"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Sales By User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}sales/user/:id?page=&limit=",
+							"host": [
+								"{{URL}}sales"
+							],
+							"path": [
+								"user",
+								":id"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Sale Status",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}sales/:id",
+							"host": [
+								"{{URL}}sales"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Sale Status",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\": \"En_camino\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}sales/:id",
+									"host": [
+										"{{URL}}sales"
+									],
+									"path": [
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\r\n    \"status\": \"En_camino\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Sale",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}sales/:id/delete",
+							"host": [
+								"{{URL}}sales"
+							],
+							"path": [
+								":id",
+								"delete"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post sale",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}sales/",
+							"host": [
+								"{{URL}}sales"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Post sale",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"paymentMethod\": \"Visa\",\r\n    \"items\": [\r\n    {\r\n      \"productId\": 1,\r\n      \"quantity\": 200\r\n    },\r\n    {\r\n      \"productId\": 2,\r\n      \"quantity\": 3\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}sales/",
+									"host": [
+										"{{URL}}sales"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\r\n    \"paymentMethod\": \"Visa\",\r\n    \"items\": [\r\n    {\r\n      \"productId\": 1,\r\n      \"quantity\": 2\r\n    },\r\n    {\r\n      \"productId\": 2,\r\n      \"quantity\": 3\r\n    }\r\n  ]\r\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\r\n//     \"username\": \"testUser\",\r\n//     \"password\": \"abC.1234\"\r\n// }\r\n\r\n{\r\n    \"username\": \"juan.pere3\",\r\n    \"password\": \"Password123!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}auth/login",
+							"host": [
+								"{{URL}}auth"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "// {\r\n//     \"username\": \"testUser\",\r\n//     \"password\": \"abC.1234\"\r\n// }\r\n\r\n{\r\n    \"username\": \"juan.pere3\",\r\n    \"password\": \"Password123!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}auth/login",
+									"host": [
+										"{{URL}}auth"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"body": "{\n    \"username\": \"testUser\",\n    \"password\": \"abC.1234\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"juan.pere\",\r\n  \"password\": \"Password123!\",\r\n  \"roleId\": 2,\r\n  \"firstName\": \"Juan\",\r\n  \"lastName\": \"Pérez\",\r\n  \"adminKey\": \"2586\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}auth/register",
+							"host": [
+								"{{URL}}auth"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"juan.pere\",\r\n  \"password\": \"Password123!\",\r\n  \"roleId\": 2,\r\n  \"firstName\": \"Juan\",\r\n  \"lastName\": \"Pérez\",\r\n  \"adminKey\": \"2586\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}auth/register",
+									"host": [
+										"{{URL}}auth"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Admin",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"juan.pere\",\r\n  \"password\": \"Password123!\",\r\n  \"roleId\": 2,\r\n  \"firstName\": \"Juan\",\r\n  \"lastName\": \"Pérez\",\r\n  \"adminKey\": \"2586\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}auth/register",
+									"host": [
+										"{{URL}}auth"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"username\": \"testUser2\",\n    \"password\": \"Password123!\",\n    \"roleId\": 1,\n    \"firstName\": \"Usuario\",\n    \"lastName\": \"Prueba\",\n    \"adminKey\": \"Aqui tu admin key\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "All roles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}auth/roles",
+					"host": [
+						"{{URL}}auth"
+					],
+					"path": [
+						"roles"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0QWRtaW4iLCJyb2xlSWQiOjIsImlhdCI6MTc1ODE2ODEyNywiZXhwIjoxNzU4MTcxNzI3fQ.103Kodhex71R96K135z6JQwzbYfI4quyF0pCIdIVz6U",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": ""
+		}
+	]
+}
