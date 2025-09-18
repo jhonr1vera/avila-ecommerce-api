@@ -131,7 +131,7 @@ $ npm run dev
    "name": "Laptop Asus",
    "description": "Gaming laptop",
    "price": 1000,
-   "quantity" 20
+   "quantity": 20
 }
 ```
 - `PATCH   /api/v1/products/:id`: Admin
@@ -141,7 +141,7 @@ $ npm run dev
    "name": "Laptop Asus",
    "description": "Gaming laptop",
    "price": 1000,
-   "quantity" 20
+   "quantity": 20
 }
 ```
 - `PATCH /api/v1/products/:id/delete`: Admin
