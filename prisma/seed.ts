@@ -6,7 +6,7 @@ const Roles = [
         "roleName": "user"
     },
     {
-        "id": 1,
+        "id": 2,
         "roleName": "admin",
         "adminKey": process.env.ADMIN_KEY
     }
