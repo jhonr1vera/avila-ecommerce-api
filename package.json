@@ -1,0 +1,42 @@
+{
+  "name": "avila-ecommerce",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/jhonr1vera/avila-ecommerce-api#readme",
+  "bugs": {
+    "url": "https://github.com/jhonr1vera/avila-ecommerce-api/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhonr1vera/avila-ecommerce-api.git"
+  },
+  "license": "ISC",
+  "author": "Jhon Rivera",
+  "main": "app.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --exec ts-node src/app.ts",
+    "build": "tsc",
+    "start": "node lib/app.js",
+    "prisma-seed": "tsx prisma/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.8.2",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "zod": "^3.25.56"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^22.15.17",
+    "dotenv": "^17.2.0",
+    "morgan": "^1.10.1",
+    "nodemon": "^3.1.10",
+    "prisma": "^6.8.2",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.5",
+    "typescript": "^5.8.3"
+  }
+}
