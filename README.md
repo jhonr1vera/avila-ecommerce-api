@@ -120,11 +120,42 @@ $ npm run dev
 ### Roles 👑
 
 - `GET api/v1/auth/roles`: Admin
+```
+[
+   {
+      "id": 1,
+      "roleName": "user,
+      "adminKey": "1234-!"
+   },...
+]
+```
 
 ### Products 🦖
 
 - `GET    /api/v1/products`: Both roles
+```
+[
+   {
+      "id": 1,
+      "name": "Laptop Asus",
+      "price": 1000,
+      "quantity":20,
+      "description": "Gaming Laptop"
+   },...
+]
+```
 - `GET    /api/v1/products/:id`: Both roles
+```
+{
+   "id": 1,
+   "name": "Laptop Asus",
+   "price": 1000,
+   "quantity":20,
+   "description": "Gaming Laptop",
+   "createdAt": date
+}
+```
+
 - `POST    /api/v1/products`: Admin
 ```
 {
