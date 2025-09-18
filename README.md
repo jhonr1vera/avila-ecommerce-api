@@ -11,7 +11,7 @@ This API is built using a Layered Architecture to promote separation of concerns
 - **Repository**: Manages database interactions, ensuring efficient data retrieval and persistence while handling errors.
 
 ### Database Design
-PostgreSQL was selected as the database engine due to its robust support for relational data modeling. Its rich feature set makes it particularly well-suited for managing relationships between entities. Prisma ORM is used to streamline database interactions, offering type-safe queries, intuitive schema management, and built-in protection against common vulnerabilities such as SQL injection.
+PostgreSQL was selected as the database engine due to its robust support for relational data modeling. Its rich feature set makes it particularly well-suited for managing relationships between entities. I used Prisma ORM to streamline database interactions, offering type-safe queries, intuitive schema management, and built-in protection against common vulnerabilities such as SQL injection.
 
 ## Base URL
 
@@ -73,7 +73,7 @@ npx prisma migrate dev
 npm run prisma-seed  
 ```
 
-## Roles 👥
+## Roles and test users 👥
 
 This API defines two distinct roles with different levels of access
 - User: Standard access for general application functionality.
@@ -143,6 +143,39 @@ $ npm run dev
 ```
 NOTE: In the main directory, you will find a file called Avila_Ecommerce.postman_collection.json. This file is to import into Postman to obtain all the endpoints and body examples, but if you prefer not to use Postman, there is a dto directory in each entity that contains the type of response expected by the endpoints.
 ```
+
+## Response Format
+
+### Success
+```
+Ex:
+{
+  "message": "Action executed successfully"
+}
+```
+
+### Error `formats in ./src/shared/utils/custom-errors.ts`
+```
+Ex:
+{
+  "type": "TypeClassError",
+  "message": "Purchase by id not found"
+}
+```
+
+## Authentication
+
+```
+Authorization: Bearer <your_jwt_token>
+```
+
+## How to test
+
+1. Set the enviroment variables.
+2. Run the `Seed Initial Data` command if you have not.
+3. Register a new user o Log in with the user provided after run the `Seed Initial Data` command.
+4. When log in you will obtain a token, that you will need to use in every request, except by register and login.
+5. Start testing depending of the user role and the endpont role needed.
 
 ## Author
 
