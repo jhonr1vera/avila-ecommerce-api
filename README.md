@@ -2,22 +2,28 @@
 
 This API powers Avila E-commerce, a B2C platform designed to connect businesses with consumers through a scalable and secure backend.
 
-### API Design
-This API is built using a Layered Architecture to promote separation of concerns and uphold the Single Responsibility Principle (SRP). Each layer is designed to encapsulate a specific aspect of the system’s functionality, resulting in a clean, modular structure that simplifies maintenance and scalability. There is these layers:
+## Table of Contents
 
-- **Routes**: Responsible for handling incoming HTTP requests and directing them to the appropriate controllers.
-- **Controllers**: Manage the application's logic, processing the requests from the routes, and coordinating with services to fulfill them.
-- **Services**: Encapsulate the business logic, ensuring reusable and modular functionality across the application.
-- **Repository**: Manages database interactions, ensuring efficient data retrieval and persistence while handling errors.
+- [Development Setup](#development-setup)
+- [Roles and test users](#roles-and-test-users)
+- [Run Server](#run-server)
+- [API Reference](#api-reference)
+- [Endpoints](#endpoints)
+- [Testing](#testing)
+
+### Architecture
+
+This API follows a **Layered Architecture** pattern promoting separation of concerns:
+
+- **Routes**: Handle HTTP requests and route them to controllers
+- **Controllers**: Process requests and coordinate with services
+- **Services**: Implement business logic and rules
+- **Repository**: Manage database interactions and data persistence
+
+This structure ensures maintainable, testable, and scalable code following SOLID principles.
 
 ### Database Design
 PostgreSQL was selected as the database engine due to its robust support for relational data modeling. Its rich feature set makes it particularly well-suited for managing relationships between entities. I used Prisma ORM to streamline database interactions, offering type-safe queries, intuitive schema management, and built-in protection against common vulnerabilities such as SQL injection.
-
-## Base URL
-
-```bash
-http://localhost:5000/
-```
 
 ### Technologies
 - Express.js
@@ -36,12 +42,6 @@ http://localhost:5000/
 - jsonwebtoken – Access control
 - dotenv – Environment variables
 - morgan – HTTP request logging
-
-
-```
-NOTE: For aditional information about dependencies look at the package.json file
-```
-
 
 ## Development Setup
 
@@ -74,7 +74,7 @@ npx prisma db seed
 npm run prisma-seed  
 ```
 
-## Roles and test users 👥
+## Roles and test users
 
 This API defines two distinct roles with different levels of access
 - User: Standard access for general application functionality.
@@ -84,7 +84,7 @@ After run the `Seed Initial Data` command, you will have two users ready for tes
 
 In login endpoint:
 
-#### With user role
+### With user role
 
 ```
 {
@@ -92,7 +92,7 @@ In login endpoint:
     "password": "abC.1234",
 }
 ```
-#### With admin role
+### With admin role
 ```
 {
     "username": "testAdmin",
@@ -115,11 +115,24 @@ These role IDs are seeded automatically and can be found in the following file `
 $ npm run dev
 ```
 
+## API Reference
+
+### Base URL
+```
+http://localhost:5000/api/v1
+```
+
+### Authentication
+All protected endpoints require a Bearer token:
+```
+Authorization: Bearer <your_jwt_token>
+```
+
 ## Endpoints
 
 ### Roles 👑
 
-- `GET api/v1/auth/roles`: Admin
+- `GET /auth/roles`: Admin
 ```
 [
    {
@@ -132,7 +145,7 @@ $ npm run dev
 
 ### Products 🦖
 
-- `GET    /api/v1/products`: Both roles
+- `GET    /products`: Both roles
 ```
 [
    {
@@ -144,7 +157,7 @@ $ npm run dev
    },...
 ]
 ```
-- `GET    /api/v1/products/:id`: Both roles
+- `GET    /products/:id`: Both roles
 ```
 {
    "id": 1,
@@ -156,7 +169,7 @@ $ npm run dev
 }
 ```
 
-- `POST    /api/v1/products`: Admin
+- `POST    /products`: Admin
 ```
 {
    "name": "Laptop Asus",
@@ -165,7 +178,7 @@ $ npm run dev
    "quantity": 20
 }
 ```
-- `PATCH   /api/v1/products/:id`: Admin
+- `PATCH   /products/:id`: Admin
 ```
 {
 # All fields are optional due is a patch method (minimun one)
@@ -175,11 +188,11 @@ $ npm run dev
    "quantity": 20
 }
 ```
-- `PATCH /api/v1/products/:id/delete`: Admin
+- `PATCH /products/:id/delete`: Admin
 
 ### Sales 🪙
 
-- `GET    /api/v1/sales`: Admin
+- `GET /sales`: Admin
 ```
 [
    {
@@ -195,7 +208,7 @@ $ npm run dev
    },...
 ]
 ```
-- `GET    /api/v1/sales/user/me`: User owner
+- `GET    /sales/user/me`: User owner
 ```
 [
    {
@@ -211,9 +224,10 @@ $ npm run dev
    },...
 ]
 ```
-- `GET    /api/v1/sales/user/:id`: Admin
+- `GET   /sales/user/:id`: Admin
 ```
-{
+[
+  {
       "id": 1,
       "saleDate": date,
       "totalAmount": 1000,
@@ -226,45 +240,46 @@ $ npm run dev
          "username": "testUser"
       }
    },...
+]  
 ```
-- `GET    /api/v1/sales/:id`: Admin or User Owner
+- `GET   /sales/:id`: Admin or User Owner
 ```
-   {
+{
+  "id": 1,
+  "saleDate": date,
+  "totalAmount": 1000,
+  "customerId": 1,
+  "paymentMethod": "Visa",
+  "status": "Pendiente",
+  "user" : {
       "id": 1,
-      "saleDate": date,
-      "totalAmount": 1000,
-      "customerId": 1,
-      "paymentMethod": "Visa",
-      "status": "Pendiente",
-      "user" : {
-         "id": 1,
-         "username": "testUser",
-         "firstName": "Nombre",
-         "lastName": "Apellido"
-      }
-      "items": [
-         {
+      "username": "testUser",
+      "firstName": "Nombre",
+      "lastName": "Apellido"
+  }
+  "items": [
+      {
+        "id": 1,
+        "quantity": 2,
+        "productId": 1,
+        "salePrice": 13,
+        "totalPrice": 26,
+        "product": {
             "id": 1,
-            "quantity": 2,
-            "productId": 1,
-            "salePrice": 13,
-            "totalPrice": 26,
-            "product": {
-               "id": 1,
-               "name": "Juguete"
-            }
-         }
-      ]
-   }
+            "name": "Juguete"
+        }
+      }
+  ]
+}
 ```
 
-- `PATCH /api/v1/sales/:id`: Admin
+- `PATCH /sales/:id`: Admin
 ```
 {
    "status": "En_camino"
 }
 ```
-- `POST   /api/v1/sales`: User
+- `POST   /sales`: User
 ```
 {
    "paymentMethod": "Visa",
@@ -276,17 +291,17 @@ $ npm run dev
     ]
 }
 ```
-- `PATCH /api/v1/sales/:id/delete`: Admin
+- `PATCH /sales/:id/delete`: Admin
 
 ### User 👤
-- `POST /api/v1/auth/login`: Both roles
+- `POST /auth/login`: Both roles
 ```
 {
     "username": "testUser",
     "password": "abC.1234",
 }
 ```
-- `POST /api/v1/auth/register`:  Both roles
+- `POST /auth/register`:  Both roles
 ```
 {
     "username": "testUser",
@@ -298,13 +313,9 @@ $ npm run dev
 }
 ```
 
-```
-NOTE: In the main directory, you will find a file called Avila_Ecommerce.postman_collection.json. This file is to import into Postman to obtain all the endpoints and body examples, but if you prefer not to use Postman, there is a dto directory in each entity that contains the type of request body expected by the endpoints. REMEMBER TO SET THE URL VARIABLE
-```
+### General Response Format
 
-## General Response Format
-
-### Success
+#### Success
 ```
 Ex:
 {
@@ -312,28 +323,27 @@ Ex:
 }
 ```
 
-### Error `formats in ./src/shared/utils/custom-errors.ts`
+#### Error `formats in ./src/shared/utils/custom-errors.ts`
 ```
 Ex:
 {
   "type": "TypeClassError",
-  "message": "Purchase by id not found"
+  "message": "Error description here"
 }
 ```
 
-## Authentication
+## Testing
 
+### Postman Collection
+Import the provided Postman collection for easy testing:
 ```
-Authorization: Bearer <your_jwt_token>
+Avila_Ecommerce.postman_collection.json
 ```
 
-## How to test
-
-1. Set the enviroment variables.
-2. Run the `Seed Initial Data` command if you have not.
-3. Register a new user o Log in with the user provided after run the `Seed Initial Data` command.
-4. When log in you will obtain a token, that you will need to use in every request, except by register and login.
-5. Start testing depending of the user role and the endpont role needed.
+### Manual Testing
+1. Start the development server
+2. Use the seeded test accounts or register a new user
+3. Test endpoints based on role permission, remember to use token in request
 
 ## Author
 
